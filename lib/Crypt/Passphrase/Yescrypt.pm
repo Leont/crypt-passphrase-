@@ -45,6 +45,17 @@ sub verify_password {
 
 #ABSTRACT: A yescrypt encoder for Crypt::Passphrase
 
+=head1 SYNOPSIS
+
+ my $passphrase = Crypt::Passphrase->new(
+   encoder => {
+     module => 'Yescrypt',
+     block_count => 12,
+     block_size  => 32,
+   },
+ );
+
+
 =head1 DESCRIPTION
 
 This class implements an yescrypt encoder for Crypt::Passphrase. yescrypt was one of the finalists of 2015's Password Hash Competition and as such is considered a safe algorithm for passwords.
@@ -57,7 +68,7 @@ This creates a new yescrypt encoder, it takes named parameters that are all opti
 
 =item * block_size
 
-The number of 128 byte units in a block. Reasonable values are from C<8> to C<96>. It default to C<32> (C<4kiB>).
+The number of 128 byte units in a block. Reasonable values are from C<8> to C<96>. It defaults to C<32> (C<4kiB>).
 
 =item * block_count
 
@@ -69,7 +80,7 @@ The number of threads used for the hash. This defaults to C<1>, and you're unlik
 
 =item * time
 
-This is the time parameter that the algorithm to use up more time. This default to C<0> and should only be used when using more memory isn't an option.
+This is the time parameter that the algorithm to use up more time. This defaults to C<0> and should only be used when using more memory isn't an option.
 
 =item * flags
 
@@ -91,7 +102,7 @@ This hashes the passwords with yescrypt according to the specified settings and 
 
 This returns true if the hash uses a different cipher or subtype, or if any of the parameters are different from that desired by the encoder.
 
-=method crypt_types()
+=method crypt_subtypes()
 
 This class supports the following crypt types: C<y> and C<7>.
 
