@@ -12,7 +12,7 @@ sub new {
 
 	return bless {
 		flags       => $args{flags}       // 0xb6,
-		block_count => $args{block_count} //   12,
+		block_count => $args{block_count} //   16,
 		block_size  => $args{block_size}  //   32,
 		parallelism => $args{parallelism} //    1,
 		time        => $args{time}        //    0,
@@ -72,7 +72,7 @@ The number of 128 byte units in a block. Reasonable values are from C<8> to C<96
 
 =item * block_count
 
-The log₂ of the number of blocks that will be used. It defaults to C<12> for C<4096> blocks and may change in the future.
+The log₂ of the number of blocks that will be used. It defaults to C<16> for C<65536> blocks and may change in the future.
 
 =item * parallelism
 
