@@ -2,6 +2,7 @@ Revision history for Crypt-Passphrase-Yescrypt
 
 {{$NEXT}}
           - Increase default block_count to 16
+          - Improve error checking in hash_password
 
 0.001     2023-03-12 17:02:46+01:00 Europe/Amsterdam
           Initial release to an unsuspecting world

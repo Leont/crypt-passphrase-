@@ -21,15 +21,18 @@ sub new {
 	}, $class;
 }
 
+my @attributes = qw/flags block_count block_size parallelism time upgrades/;
+
 sub hash_password {
 	my ($self, $password) = @_;
 	my $salt = $self->random_bytes($self->{salt_size});
-	return yescrypt($password, $salt, @{$self}{qw/flags block_count block_size parallelism time upgrades/});
+	my $result = yescrypt($password, $salt, @{$self}{@attributes});
+	return $result // Carp::croak("Can't hash password");
 }
 
 sub needs_rehash {
 	my ($self, $hash) = @_;
-	return yescrypt_needs_rehash($hash, @{$self}{qw/flags block_count block_size parallelism time upgrades/});
+	return yescrypt_needs_rehash($hash, @{$self}{@attributes});
 }
 
 sub crypt_subtypes {
